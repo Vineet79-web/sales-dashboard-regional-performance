@@ -1,9 +1,10 @@
 # Power BI: Setup and DAX Measures
 
 ## 1. Connect
-1. Power BI Desktop > **Get Data > PostgreSQL database** (server `localhost`, database `sales_dashboard`).
-   - No PostgreSQL? Use **Get Data > Text/CSV** and load `data/orders.csv`, `products.csv`, `returns.csv`, then merge them in Power Query.
-2. Load the view **`vw_sales_analysis`** (already joins the 3 tables).
+1. Power BI Desktop > **Get data > Text/CSV** > choose `data/sales_analysis.csv` > **Load**.
+   - The table is named `sales` in the formulas below. Rename it if Power BI used another name.
+   - (PostgreSQL option: load the view `vw_sales_analysis` and rename it `sales`.)
+2. Make sure `order_date` has data type **Date**.
 3. Create a calendar table (Modeling > New table):
 
 ```DAX
@@ -16,20 +17,20 @@ ADDCOLUMNS(
     "Month Start", DATE(YEAR([Date]), MONTH([Date]), 1)
 )
 ```
-4. Relationship: `Calendar[Date]` (1) to `vw_sales_analysis[order_date]` (many). Sort `Month` by `Month No`.
+4. Relationship: `Calendar[Date]` (1) to `sales[order_date]` (many). Sort `Month` by `Month No`.
 
 ## 2. The 10 measures
 
 ```DAX
-Total Sales = SUM(vw_sales_analysis[net_sales])
+Total Sales = SUM(sales[net_sales])
 
-Total Orders = DISTINCTCOUNT(vw_sales_analysis[order_id])
+Total Orders = DISTINCTCOUNT(sales[order_id])
 
-Units Sold = SUM(vw_sales_analysis[quantity])
+Units Sold = SUM(sales[quantity])
 
 Avg Order Value = DIVIDE([Total Sales], [Total Orders])
 
-Returned Orders = CALCULATE([Total Orders], vw_sales_analysis[is_returned] = 1)
+Returned Orders = CALCULATE([Total Orders], sales[is_returned] = 1)
 
 Return Rate % = DIVIDE([Returned Orders], [Total Orders])
 
@@ -38,9 +39,9 @@ Sales Previous Month = CALCULATE([Total Sales], DATEADD('Calendar'[Date], -1, MO
 Sales MoM % = DIVIDE([Total Sales] - [Sales Previous Month], [Sales Previous Month])
 
 Region Share % =
-DIVIDE([Total Sales], CALCULATE([Total Sales], ALL(vw_sales_analysis[region])))
+DIVIDE([Total Sales], CALCULATE([Total Sales], ALL(sales[region])))
 
-Avg Discount % = AVERAGE(vw_sales_analysis[discount])
+Avg Discount % = AVERAGE(sales[discount])
 ```
 
 ## 3. Suggested pages (multipage dashboard)

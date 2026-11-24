@@ -13,6 +13,7 @@ An end-to-end analytics project: PostgreSQL for joining and shaping the data, Po
 ```
 ├── generate_data.py          # creates the 3 CSV tables
 ├── make_charts.py            # KPI charts + findings (Python)
+├── export_flat_csv.py        # joins the 3 tables into data/sales_analysis.csv
 ├── outputs/charts/           # generated preview charts
 ├── data/                     # orders.csv, products.csv, returns.csv
 ├── sql/
@@ -36,7 +37,7 @@ psql -d sales_dashboard -f sql/02_load_data.sql   # run from the project root
 psql -d sales_dashboard -f sql/03_analysis_dataset.sql
 psql -d sales_dashboard -f sql/04_kpi_queries.sql
 ```
-Then follow `powerbi/DAX_measures.md` to build the dashboard.
+Then follow `powerbi/BUILD_STEPS.md` (step by step) and `powerbi/DAX_measures.md` to build the dashboard. Load the single file `data/sales_analysis.csv` (created by `export_flat_csv.py`).
 
 ## SQL skills shown
 Joins (INNER + LEFT), views, `DATE_TRUNC`, aggregate `FILTER`, window functions (`LAG`, `RANK`, `ROW_NUMBER`, running totals), CTEs, indexes.
