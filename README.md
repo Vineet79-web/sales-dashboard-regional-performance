@@ -12,6 +12,8 @@ An end-to-end analytics project: PostgreSQL for joining and shaping the data, Po
 ## What is in this repo
 ```
 ├── generate_data.py          # creates the 3 CSV tables
+├── make_charts.py            # KPI charts + findings (Python)
+├── outputs/charts/           # generated preview charts
 ├── data/                     # orders.csv, products.csv, returns.csv
 ├── sql/
 │   ├── 01_schema.sql         # tables, keys, indexes (PostgreSQL)
@@ -40,11 +42,22 @@ Then follow `powerbi/DAX_measures.md` to build the dashboard.
 Joins (INNER + LEFT), views, `DATE_TRUNC`, aggregate `FILTER`, window functions (`LAG`, `RANK`, `ROW_NUMBER`, running totals), CTEs, indexes.
 
 ## Key findings
-> Fill in from YOUR query output and dashboard. Example format:
+Results from the synthetic dataset (SQL queries and `make_charts.py` give the same numbers):
 
-- Total net sales: **__**; top region: **__** (**__%** share)
-- December vs Oct-Nov monthly average sales change: **__%** (South: **__%**)
-- Highest return rate category: **__** (**__%**)
+- Total net sales: **Rs 41.09 crore** across **25,000 orders** (average order value about **Rs 16,400**).
+- Top region: **North** with **22.1%** of sales; Central is lowest.
+- Sales peak in **October** (festival season) and fall **40.0%** in December versus the Oct-Nov monthly average. By region: North -52.2%, West -39.4%, East -39.1%, South -37.1%, Central -28.3%.
+- Overall return rate is **6.0%**; **Beauty** has the highest (6.39%) and **Electronics** the lowest (5.30%).
+
+**Recommendations:** plan a December re-engagement campaign (offers, bundles) for North, where the post-festival drop is largest; review product quality and descriptions in Beauty and Fashion to reduce returns.
+
+## Preview charts
+Python (Matplotlib) previews of the same KPIs. Build the interactive version in Power BI using `powerbi/DAX_measures.md`.
+
+![Monthly sales](outputs/charts/01_monthly_sales.png)
+![Sales by region](outputs/charts/02_sales_by_region.png)
+![Post-festival change](outputs/charts/04_post_festival_change.png)
+![Return rate by category](outputs/charts/05_return_rate_by_category.png)
 
 ## Tech stack
 PostgreSQL, SQL, Power BI (DAX, Power Query), Python (Pandas, NumPy) for data generation
