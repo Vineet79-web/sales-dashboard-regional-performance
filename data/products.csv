@@ -1,0 +1,41 @@
+product_id,product_name,category,unit_price
+1,Electronics Item 1,Electronics,8087
+2,Electronics Item 2,Electronics,47115
+3,Electronics Item 3,Electronics,40310
+4,Electronics Item 4,Electronics,28016
+5,Electronics Item 5,Electronics,27681
+6,Electronics Item 6,Electronics,51940
+7,Electronics Item 7,Electronics,7898
+8,Electronics Item 8,Electronics,42749
+9,Home Item 1,Home & Kitchen,2816
+10,Home Item 2,Home & Kitchen,1583
+11,Home Item 3,Home & Kitchen,6554
+12,Home Item 4,Home & Kitchen,11719
+13,Home Item 5,Home & Kitchen,8961
+14,Home Item 6,Home & Kitchen,9253
+15,Home Item 7,Home & Kitchen,8750
+16,Home Item 8,Home & Kitchen,9539
+17,Fashion Item 1,Fashion,3274
+18,Fashion Item 2,Fashion,1117
+19,Fashion Item 3,Fashion,5102
+20,Fashion Item 4,Fashion,2922
+21,Fashion Item 5,Fashion,3201
+22,Fashion Item 6,Fashion,2476
+23,Fashion Item 7,Fashion,1422
+24,Fashion Item 8,Fashion,5589
+25,Beauty Item 1,Beauty,1986
+26,Beauty Item 2,Beauty,1663
+27,Beauty Item 3,Beauty,1095
+28,Beauty Item 4,Beauty,2083
+29,Beauty Item 5,Beauty,1431
+30,Beauty Item 6,Beauty,1192
+31,Beauty Item 7,Beauty,1208
+32,Beauty Item 8,Beauty,684
+33,Sports Item 1,Sports,1101
+34,Sports Item 2,Sports,5124
+35,Sports Item 3,Sports,8024
+36,Sports Item 4,Sports,855
+37,Sports Item 5,Sports,7767
+38,Sports Item 6,Sports,7500
+39,Sports Item 7,Sports,2707
+40,Sports Item 8,Sports,5795
